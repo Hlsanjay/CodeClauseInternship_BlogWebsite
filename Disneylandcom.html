@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="Disneylandcom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>Disneyland</h1>
+                <h3>The Happiest Place on Earth</h3>
+                <a href="america.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong>Disneyland was the brainchild of Walt Disney, who envisioned a place where children and parents could have fun together. The park features eight themed lands, each offering a variety of attractions, shows, and experiences that transport visitors to different worlds of fantasy and adventure.</li>
+                    <li><strong>Importance:</strong>Disneyland, the iconic theme park located in Anaheim, California, is where magic comes to life. Known as "The Happiest Place on Earth," Disneyland has been a beloved destination for families and Disney enthusiasts since its opening in 1955. In this blog, we'll delve into the history, attractions, and unique experiences that make Disneyland a must-visit destination for people of all ages.</li>
+                </ul>
+                <h3>Historical Significance</h3>
+                <ul>
+                    <li><strong>Conception and Creation:</strong>Walt Disney's dream of creating a theme park began in the early 1950s. His vision was to build a place where families could experience joy and wonder together. Disneyland's construction began in 1954 on a 160-acre site in Anaheim, California.</li>
+                    <li><strong>Opening Day:</strong> Disneyland officially opened on July 17, 1955. The opening day was broadcast live on national television and attracted over 28,000 visitors. Despite initial challenges and overcrowding, the park was an instant success and quickly became a cultural phenomenon.</li>
+                    <li><strong>Legacy and Expansion:</strong> Over the years, Disneyland has expanded and evolved, adding new attractions and lands. Notable additions include New Orleans Square in 1966, Critter Country in 1972, and Mickey's Toontown in 1993. The park's success also led to the creation of other Disney parks around the world, including Walt Disney World in Florida, Tokyo Disneyland, and Disneyland Paris.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+:root{
+    --bg-color:#080808;
+    --second-bg-color:#101010;
+    --text-color:white;
+    --main-color:#ea580c;
+}
+
+.main-home {
+    height: 650px;
+    background: url("images/africa.jpeg");
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+}
+
+.main-home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity to make it darker or lighter */
+    z-index: 1; /* Make sure the overlay is on top of the image */
+}
+
+/* Ensure content inside .main-home is above the overlay */
+.main-home * {
+    position: relative;
+    z-index: 2;
+}
+
+.main-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    backdrop-filter: blur(10px);
+    /* border-bottom: 1px solid #ddd; */
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; /* Ensures it stays above other content */
+}
+
+#homebt{
+    margin-top: 60px;
+}
+
+.home-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 250px;
+}
+.home-content{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    text-align: right;
+    width: 100%;
+}
+.home-content h1{
+    font-size: 5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    line-height: 1;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+.home-content h1:hover{
+    transform: scale(1.1);
+}
+.home-content h3{
+   margin-top: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 0;
+    color: white;
+}
+.cmt-rcd{
+    background-color: white;
+    width: 800px;
+    height: 100%;
+    margin-left: 280px;
+    margin-top: 50px;
+}
+.comm-main{
+    background-color: #F5F5F5;
+    margin-top: 50px;
+padding: 10px;
+}
+.details{
+   
+    margin-top: 100px;
+    width: 800px;
+    text-align: left;
+    margin-left: 280px;
+    background-color: white;
+    padding: 5px;
+}
+.cmt-box{
+    width: 800px;
+    margin-left: 280px;
+    background-color: white;
+    margin-top: 50px;
+    height: 400px;
+    text-align: center;
+    padding-top: 80px;
+}
+#cmt-sub{
+    margin-top: 18px;
+    margin-left: -500px !important;
+}
+.per-det{
+    margin-top: 15px;
+    
+}

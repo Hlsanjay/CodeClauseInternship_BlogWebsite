@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="Neuschwansteincom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>Neuschwanstein Castle</h1>
+                <h3> A Fairytale Fortress</h3>
+                <a href="europe.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong>Commissioned by King Ludwig II of Bavaria in the 19th century, Neuschwanstein Castle was designed to be a retreat and a tribute to the operas of Richard Wagner. Its stunning location, romantic design, and rich history make it a must-visit destination for travelers from around the globe.</li>
+                    <li><strong>Importance:</strong> Neuschwanstein Castle, nestled in the Bavarian Alps of Germany, is one of the most picturesque and iconic castles in the world. Often referred to as the "fairytale castle," it has inspired countless stories, movies, and even the famous Sleeping Beauty Castle at Disneyland. In this blog, we'll explore the history, architecture, and cultural impact of Neuschwanstein Castle.</li>
+                </ul>
+                <h3>Historical Significance</h3>
+                <ul>
+                    <li><strong>King Ludwig II and His Vision:</strong> King Ludwig II, also known as the "Mad King," was a passionate admirer of Richard Wagner's operas and medieval chivalry. He envisioned Neuschwanstein Castle as a fantastical retreat that embodied these elements. Construction began in 1869, and although Ludwig died before its completion, the castle stands as a testament to his romantic ideals and imagination.</li>
+                    <li><strong>Construction and Delays:</strong>The construction of Neuschwanstein Castle was a monumental task, involving significant engineering challenges due to its mountainous location. Ludwig's ambitious vision and frequent design changes led to delays and escalating costs. Despite this, the castle was partially completed and inhabited by Ludwig in 1884.</li>
+                    <li><strong>After Ludwig's Death:</strong> Following Ludwig's mysterious death in 1886, Neuschwanstein Castle was opened to the public. It quickly became a popular tourist destination, attracting visitors eager to experience its fairytale allure and stunning architecture.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

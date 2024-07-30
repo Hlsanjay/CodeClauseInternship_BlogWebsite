@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="Canyoncom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>The Grand Canyon</h1>
+                <h3>A Natural Wonder of the World</h3>
+                <a href="america.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong>The Grand Canyon stretches 277 miles (446 kilometers) in length, up to 18 miles (29 kilometers) in width, and over a mile (1.6 kilometers) deep. Carved by the Colorado River over millions of years, the canyon showcases a remarkable array of geological formations, colors, and landscapes that tell the story of Earth's history.</li>
+                    <li><strong>Importance:</strong> The Grand Canyon, one of the most awe-inspiring natural wonders on Earth, is a testament to the power and beauty of nature. Located in northern Arizona, this iconic landmark attracts millions of visitors each year who come to marvel at its immense size, stunning vistas, and geological significance. In this blog, we'll explore the history, geology, and visitor experiences that make the Grand Canyon a must-see destination.</li>
+                </ul>
+                <h3>Geological Significance</h3>
+                <ul>
+                    <li><strong>Formation and Age:</strong> The Grand Canyon's formation began around 6 million years ago, although the rock layers exposed in its walls date back as much as 2 billion years. The canyon was primarily carved by the Colorado River, which cut through layers of rock, revealing a cross-section of Earth's geological history.</li>
+                    <li><strong>Rock Layers and Strata:</strong> The Grand Canyon's walls display a variety of rock layers, each representing different geological periods. These layers include ancient Vishnu Schist at the bottom, dating back 1.7 billion years, and the more recent Kaibab Limestone at the top, around 270 million years old. The distinct colors and textures of these layers create the canyon's striking visual appearance.</li>
+                    <li><strong>Erosional Processes:</strong>Erosion by water, wind, and ice has played a significant role in shaping the Grand Canyon. Flash floods, rockfalls, and weathering continue to alter its landscape, making it a dynamic and ever-changing natural wonder.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

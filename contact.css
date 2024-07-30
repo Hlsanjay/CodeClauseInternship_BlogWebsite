@@ -1,0 +1,226 @@
+:root{
+    --bg-color:#080808;
+    --second-bg-color:#101010;
+    --text-color:white;
+    --main-color:#ea580c;
+}
+
+.main-home {
+    height: 430px;
+    background: url("images/about.jpeg");
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+}
+
+.main-home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity to make it darker or lighter */
+    z-index: 1; /* Make sure the overlay is on top of the image */
+}
+
+/* Ensure content inside .main-home is above the overlay */
+.main-home * {
+    position: relative;
+    z-index: 2;
+}
+
+.main-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    backdrop-filter: blur(10px);
+    /* border-bottom: 1px solid #ddd; */
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; /* Ensures it stays above other content */
+}
+
+#homebt{
+    margin-top: 60px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 30px; 
+    cursor: pointer;
+}
+
+.logo img {
+    height: 100px;
+    width: 150px;
+}
+.nav-links {
+    display: flex;
+    gap: 50px;
+    margin-right: 150px;
+    list-style-type: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-family: "poppins";
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-links a:hover {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 120px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.home-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+.home-content{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    text-align: right;
+    width: 100%;
+}
+.home-content h1{
+    font-size: 5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    line-height: 1;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+.home-content h1:hover{
+    transform: scale(1.1);
+}
+.home-content h3{
+   margin-top: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 0;
+    color: white;
+}
+
+/* .abt-c{
+    margin-top: 150px;
+    width: 800px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 270px;
+    color: gray;
+} */
+
+.galery{
+    padding: 50px;
+    background-color: #F6F9F6;
+    margin-top: 50px;
+}
+.galery1 {
+    margin-top: 80px;
+    width: 500px;
+    height: 400px;
+    margin-left: 30px;
+    
+}
+
+.galery1-img{
+    margin-left: 550px;
+    margin-top: -450px;
+}
+.galery1-img img{
+    height: 400px;
+    }
+
+.duble-box{
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    background-color:#F4F4F4 ;
+}
+.mission{
+    width: 500px;
+    text-align: left;
+    
+}
+.con-dl{
+    text-align: left;
+   margin-top: 30px;
+}
+.value{
+    width: 500px;
+    text-align: left;
+    margin-left: 50px;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+.form-container label,
+.form-container input,
+.form-container textarea {
+    margin-bottom: 10px;
+}
+.footer{
+    display: flex;
+    height: 150px;
+    background-color: gray;
+    padding: 40px;
+    margin-top: 100px;
+ 
+ }
+ .instagram 
+ {
+     margin-right: 20px;
+     cursor: pointer;
+     color: #F6F9F6;
+ }
+ .youtube{
+     margin-right: 20px;
+     cursor: pointer;
+     color: #F6F9F6;
+ }
+ .twitter{
+     cursor: pointer;
+     color: #F6F9F6;
+ }
+ .foot-p{
+     margin-top: 50px;
+    margin-left: 350px;
+    color: #F6F9F6;
+    font-weight: bold;
+ }
+
+ .thank-you-message, .error-message {
+    display: none;
+}
+.error-message {
+    color: red;
+}

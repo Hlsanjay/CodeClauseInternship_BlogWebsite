@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="Colosseumcom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>The Colosseum</h1>
+                <h3>Rome’s Ancient Marvel</h3>
+                <a href="europe.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong>The Colosseum, also known as the Flavian Amphitheatre, is located in the heart of Rome, Italy. Commissioned by Emperor Vespasian of the Flavian dynasty around AD 70-72 and completed in AD 80 by his son Titus, the Colosseum was designed to host a variety of public spectacles, including gladiatorial contests, animal hunts, and mock naval battles. With a seating capacity of approximately 50,000 to 80,000 spectators, it was the largest amphitheater ever built at the time.</li>
+                    <li><strong>Importance:</strong>The Colosseum, one of the most iconic symbols of ancient Rome, stands as a testament to the grandeur and ingenuity of Roman engineering and architecture. This monumental amphitheater, known for its colossal scale and historical significance, has captivated the imaginations of historians, archaeologists, and tourists for centuries. In this blog, we'll explore the history, architecture, and cultural impact of the Colosseum.</li>
+                </ul>
+                <h3>Historical Significance</h3>
+                <ul>
+                    <li><strong>Construction and Purpose:</strong>The construction of the Colosseum began under Emperor Vespasian and was completed under his successor, Titus, with further modifications made during the reign of Domitian. The amphitheater was built on the site of Nero's Golden House, symbolizing the return of land to the people of Rome. It served as a venue for various public spectacles that showcased the might and wealth of the Roman Empire.</li>
+                    <li><strong>Inaugural Games:</strong> The Colosseum's inaugural games, held in AD 80, lasted for 100 days and included gladiatorial combats, wild animal hunts, and staged naval battles, during which the arena was flooded with water. These games were a means to demonstrate the power and generosity of the emperor to the Roman populace.</li>
+                    <li><strong>Decline and Preservation:</strong>  After the fall of the Western Roman Empire, the Colosseum fell into neglect and suffered damage from natural disasters and stone robbing. Despite this, it remained an iconic structure throughout history. Efforts to preserve the Colosseum began in the 18th century, and it continues to be a significant cultural and historical landmark.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

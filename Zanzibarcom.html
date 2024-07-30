@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="Zanzibarcom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>Zanzibar</h1>
+                <h3>The Spice Island of East Africa</h3>
+                <a href="africa.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Zanzibar consists of two main islands, Unguja (commonly referred to as Zanzibar Island) and Pemba, along with several smaller islets. The archipelago is renowned for its stunning white-sand beaches, turquoise waters, and coral reefs. Beyond its natural beauty, Zanzibar boasts a rich cultural heritage, with Stone Town, a UNESCO World Heritage Site, serving as a living testament to the island's storied past.</li>
+                    <li><strong>Importance:</strong> Zanzibar, an archipelago off the coast of Tanzania, is a tropical paradise known for its pristine beaches, rich history, and vibrant culture. Often referred to as the "Spice Island" due to its historic role in the spice trade, Zanzibar offers a unique blend of African, Arab, Indian, and European influences. In this blog, we'll delve into the enchanting allure, historical significance, and diverse attractions of Zanzibar.</li>
+                </ul>
+                <h3>Beaches</h3>
+                <ul>
+                    <li><strong>Beaches:</strong> Zanzibar's beaches are some of the most beautiful in the world, characterized by powdery white sand and crystal-clear waters. Popular beaches include Nungwi and Kendwa in the north, known for their vibrant nightlife, and Paje and Jambiani in the east, favored by kitesurfers and those seeking tranquility.</li>
+                    <li><strong>Coral Reefs and Marine Life:</strong> The surrounding Indian Ocean is home to vibrant coral reefs, making Zanzibar a premier destination for snorkeling and diving. Mnemba Atoll and Chumbe Island Coral Park are renowned for their rich marine biodiversity, including colorful fish, sea turtles, and dolphins.</li>
+                    <li><strong>Jozani Forest:</strong> The Jozani Chwaka Bay National Park, located in the heart of Zanzibar, is the island's only national park. It is home to the rare red colobus monkey, as well as diverse plant and animal species. Walking through the lush mangrove forests offers a chance to experience Zanzibar's unique flora and fauna.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

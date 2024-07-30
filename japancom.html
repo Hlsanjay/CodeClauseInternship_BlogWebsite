@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="japancom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>Kyoto</h1>
+                <h3>The Cultural Heart of Japan</h3>
+                <a href="asia.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Kyoto is often referred to as the cultural capital of Japan, boasting an impressive array of UNESCO World Heritage Sites, traditional wooden machiya houses, and iconic landmarks. Nestled in a valley surrounded by mountains, Kyoto's scenic beauty complements its architectural and cultural wonders, making it a must-visit destination for anyone interested in Japan's rich heritage.</li>
+                    <li><strong>Importance:</strong> Kyoto, once the imperial capital of Japan for over a thousand years, is a city rich in history, culture, and tradition. Known for its well-preserved temples, stunning gardens, traditional tea houses, and vibrant geisha culture, Kyoto offers a unique glimpse into Japan's past while seamlessly blending with its present. In this blog, we'll explore the enchanting charm, historical significance, and cultural treasures of Kyoto.</li>
+                </ul>
+                <h3>Historical Significance</h3>
+                <ul>
+                    <li><strong>Imperial Capital:</strong> Kyoto served as Japan's capital and the emperor's residence from 794 until 1868. The city played a central role in the development of Japanese culture, politics, and religion, leaving behind a legacy of historical landmarks and traditions.</li>
+                    <li><strong>Preservation of Tradition:</strong>Unlike many other cities in Japan, Kyoto was largely spared from the bombings during World War II, allowing its historical sites to remain intact. This preservation has made Kyoto a living museum of Japan's cultural and historical heritage.</li>
+                    <li><strong>UNESCO World Heritage Sites:</strong> Kyoto is home to 17 UNESCO World Heritage Sites, including temples, shrines, and gardens. These sites offer a window into the architectural and cultural achievements of different periods in Japanese history.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

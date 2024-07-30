@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="desertcom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>Desert Safari in the UAE</h1>
+                <h3>An Adventure in the Arabian Sands</h3>
+                <a href="asia.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong> The UAE, known for its modern cities and luxurious lifestyle, also boasts some of the most stunning desert landscapes in the world. A desert safari typically involves an exciting journey into the heart of the desert, where visitors can partake in various activities such as dune bashing, camel riding, and traditional Bedouin-style dining. These safaris offer a chance to escape the urban hustle and experience the serene and timeless beauty of the desert.</li>
+                    <li><strong>Importance:</strong> A desert safari in the United Arab Emirates (UAE) is an exhilarating and unforgettable experience, offering a blend of adventure, culture, and natural beauty. The vast Arabian desert, with its golden dunes and mesmerizing landscapes, provides the perfect backdrop for a range of activities that immerse visitors in the unique environment of the UAE. In this blog, we'll explore the thrilling experiences, cultural encounters, and scenic beauty of a desert safari in the UAE.</li>
+                </ul>
+                <h3>Adventure Activities</h3>
+                <ul>
+                    <li><strong>Dune Bashing:</strong> One of the highlights of a desert safari is dune bashing, an adrenaline-pumping ride over the rolling sand dunes in a 4x4 vehicle. Experienced drivers navigate the shifting sands, providing a thrilling experience as the vehicle climbs steep dunes and descends sharply, giving passengers a roller-coaster-like adventure.</li>
+                    <li><strong>Sandboarding:</strong>Similar to snowboarding, sandboarding allows visitors to glide down the dunes on a board. This fun and exciting activity is suitable for all ages and offers a unique way to enjoy the desert landscape.</li>
+                    <li><strong>Quad Biking and Buggy Riding:</strong> For those seeking more control over their adventure, quad biking and dune buggy rides provide the opportunity to explore the desert at your own pace. These vehicles are designed to handle the challenging terrain, offering a thrilling ride across the sandy expanse.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

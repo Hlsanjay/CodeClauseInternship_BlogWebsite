@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="Amsterdamcom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>Amsterdam Canals</h1>
+                <h3>The Heart of the Dutch Capital</h3>
+                <a href="index.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong> Amsterdam's canal system, known as the Grachtengordel, was constructed during the Dutch Golden Age in the 17th century. The canals were designed to enhance the city's infrastructure, facilitate trade, and manage water levels. Today, they are a UNESCO World Heritage site and one of the city's most famous attractions, drawing millions of visitors each year.</li>
+                    <li><strong>Importance:</strong> Amsterdam's canals, with their picturesque beauty and historical significance, form the heart of the Dutch capital. These iconic waterways, often referred to as the "Venice of the North," are an integral part of the city's charm and appeal. In this blog, we'll explore the history, design, and cultural impact of Amsterdam's canals.</li>
+                </ul>
+
+                
+
+                <h3>Historical Significance</h3>
+                <ul>
+                    <li><strong>Origins and Construction:</strong>The construction of Amsterdam's canals began in the early 17th century as part of a comprehensive city plan to accommodate the growing population and improve trade routes. The city's three main canals—Herengracht, Prinsengracht, and Keizersgracht—were built in concentric arcs around the city center, creating a unique and efficient urban layout.</li>
+                    <li><strong>Dutch Golden Age:</strong>During the Dutch Golden Age, Amsterdam became a major hub of trade, finance, and culture. The canals facilitated the movement of goods and people, contributing to the city's economic prosperity. Many of the elegant canal houses and warehouses that line the waterways were built during this period, reflecting the wealth and sophistication of Amsterdam's merchant class.</li>
+                    <li><strong>Modern Era:</strong> Over the centuries, Amsterdam's canals have evolved but have always remained a central feature of the city's identity. Efforts to preserve and maintain the canals have been ongoing, ensuring that they continue to serve as both functional waterways and beautiful landmarks.</li>
+                </ul>
+            </div>
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="Vegascom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>The Las Vegas Strip</h1>
+                <h3>A Glitzy Oasis in the Desert</h3>
+                <a href="america.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong>The Las Vegas Strip is a 4.2-mile (6.8-kilometer) section of Las Vegas Boulevard South, known for its concentration of resort hotels and casinos. From its humble beginnings in the mid-20th century, the Strip has evolved into a global icon of leisure and extravagance.</li>
+                    <li><strong>Importance:</strong> The Las Vegas Strip, a dazzling stretch of road in the heart of the Nevada desert, is synonymous with entertainment, luxury, and excitement. Known for its world-class resorts, casinos, and vibrant nightlife, the Strip attracts millions of visitors each year. In this blog, we'll explore the history, attractions, and unique experiences that make the Las Vegas Strip a must-visit destination.</li>
+                </ul>
+                <h3>Historical Significance</h3>
+                <ul>
+                    <li><strong>Origins and Development:</strong> The history of the Las Vegas Strip began in the 1940s when the first hotel-casino, El Rancho Vegas, opened its doors. This was followed by other pioneering establishments such as the Flamingo, built by the infamous mobster Bugsy Siegel. The Strip's development accelerated in the 1950s and 1960s, with iconic properties like the Sands, the Dunes, and the Stardust shaping its early landscape.</li>
+                    <li><strong>Transformation and Growth:</strong>The 1990s marked a period of dramatic transformation for the Strip, with the construction of mega-resorts such as the Mirage, the Bellagio, and the Venetian. These resorts introduced themes, elaborate entertainment, and luxury amenities that set new standards for the hospitality industry. The Strip continued to evolve, with newer properties like the Wynn and the Cosmopolitan adding to its allure.</li>
+                    <li><strong>Cultural Impact:</strong> The Las Vegas Strip has played a significant role in American pop culture, appearing in countless films, television shows, and music videos. Its vibrant energy and larger-than-life persona have made it an enduring symbol of entertainment and excess.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Wildlife</title>
+    <link rel="stylesheet" href="chinacom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+    </style>
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('commentForm').addEventListener('submit', function(event) {
+                var name = document.getElementById('commentName').value.trim();
+                var email = document.getElementById('commentEmail').value.trim();
+                var comment = document.getElementById('commentText').value.trim();
+                var place = document.getElementById('commentWebsite').value.trim();
+
+                if (!name || !email || !comment || !place) {
+                    alert('Please fill in all required fields.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    // If valid, add the comment to the comment list
+                    addComment(name, comment, place);
+                    document.getElementById('commentForm').reset(); // Reset form
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            function isValidEmail(email) {
+                // Basic email validation regex
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function addComment(name, comment, place) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <strong>${name}</strong> said: ${place} is
+                    </div>
+                    <div class="comment-body">
+                        ${comment}
+                    </div>
+                `;
+
+                // Append the new comment to the comment list
+                var commentList = document.getElementById('commentList');
+                commentList.appendChild(commentElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="main-home">
+        <section class="home-section">
+            <div class="home-content">
+                <h1>The Great Wall of China</h1>
+                <h3>A Monumental Marvel of Human History</h3>
+                <a href="asia.html">
+                    <button type="button" class="btn btn-light" id="homebt">Home>></button>
+                </a>
+            </div>
+        </section>
+
+        <div class="comm-main">
+            <div class="details">
+                <h2>Introduction</h2>
+                <ul>
+                    <li><strong>Overview:</strong>The Great Wall of China is a series of fortifications made of stone, brick, tamped earth, wood, and other materials, built along the northern borders of China to protect against invasions. Its construction began as early as the 7th century BC and continued through several dynasties, with the most well-known sections built by the Ming Dynasty (1368–1644). Extending over 13,000 miles, the Great Wall is not only a physical barrier but also a testament to China's historical endurance and strategic military planning.</li>
+                    <li><strong>Importance:</strong> The Great Wall of China, one of the most extraordinary feats of engineering and human perseverance, stretches across thousands of miles and spans several dynasties. This colossal structure has stood the test of time, symbolizing the strength, ingenuity, and resilience of the Chinese civilization. In this blog, we'll explore the rich history, architectural brilliance, and cultural significance of the Great Wall of China.</li>
+                </ul>
+
+            
+                <h3>Architectural Brilliance</h3>
+                <ul>
+                    <li><strong>Design and Structure:</strong> The Great Wall's design varies by region, reflecting the materials available and the strategic importance of each section. The wall's height ranges from 15 to 30 feet, with watchtowers, battlements, and fortresses strategically placed for defense and communication.</li>
+                    <li><strong>Construction Techniques:</strong>  Early sections of the wall were made from compacted earth and wood, while later sections, particularly those built during the Ming Dynasty, used bricks and stones for increased durability. The wall incorporates various architectural innovations, including crenellations for archers and beacon towers for signaling.</li>
+                    <li><strong>Environmental Adaptations:</strong> The Great Wall traverses diverse terrains, from deserts and mountains to plains and rivers. Its construction required ingenious adaptations to different environments, showcasing the builders' resourcefulness and engineering prowess.</li>
+                </ul>
+            </div>
+
+            <div class="comments-section">
+                <div class="cmt-rcd">
+                    <h2>Comments...</h2>
+                    <div id="commentList"></div>
+                </div>
+
+                <div class="cmt-box">
+                    <h2>Leave a Comment</h2>
+                    <p>Your email address will not be published.</p>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Type your comment here" style="height: 100px; width: 580px;"></textarea>
+                        <div class="per-det">
+                            <input type="text" id="commentName" placeholder="Name" required>
+                            <input type="email" id="commentEmail" placeholder="Email" required>
+                            <input type="text" id="commentWebsite" placeholder="Place" required>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="cmt-sub">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

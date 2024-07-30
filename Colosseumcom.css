@@ -1,0 +1,125 @@
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #101010;
+    --text-color: white;
+    --main-color: #ea580c;
+}
+
+.main-home {
+    height: 650px ;
+    background: url("images/Colosseum.jpeg");
+    background-size: cover;
+    position: absolute; /* Changed from absolute to relative */
+    width: 100%;
+   
+}
+
+.main-home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.main-home * {
+    position: relative;
+    z-index: 2;
+}
+
+.main-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+#homebt {
+    margin-top: 60px;
+}
+
+.home-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 250px;
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Changed from right to center */
+    width: 100%;
+}
+
+.home-content h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    line-height: 1;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+.home-content h1:hover {
+    transform: scale(1.1);
+}
+
+.home-content h3 {
+    margin-top: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1; /* Adjusted for better spacing */
+    color: white;
+}
+
+.comm-main {
+    background-color: #f5f5f5;
+    margin-top: 50px;
+    padding: 100px;
+}
+
+.details {
+    margin-top: 0px; /* Adjusted for better spacing */
+    width: 100%; /* Adjusted to full width */
+    text-align: left;
+    background-color: white;
+    padding: 20px;
+}
+
+.comments-section {
+    width: 100%; /* Adjusted to full width */
+    padding: 20px;
+}
+
+.cmt-rcd,
+.cmt-box {
+    background-color: white;
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.cmt-box {
+    text-align: center;
+}
+
+#cmt-sub {
+    margin-top: 18px;
+    margin-left: 0 !important; /* Adjusted to center */
+}
+
+.per-det{
+    margin-top: 15px;
+    
+}
+
